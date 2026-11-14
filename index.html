@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Ibrahim Shahin | Cybersecurity Portfolio</title>
+  <meta name="description" content="Ali Ibrahim Shahin - 3rd-year Computer Science & AI student specializing in Cybersecurity. Open for freelance work and internships." />
+  <meta name="theme-color" content="#0b1120" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Cairo:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Cairo', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+            arabic: ['Cairo', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            ink: { 950: '#070b14', 900: '#0b1120', 800: '#111a2e', 700: '#1a2540', 600: '#243152' },
+            neon: { DEFAULT: '#00ff9c', soft: '#4dffbd', cyan: '#22d3ee' },
+          },
+          boxShadow: {
+            glow: '0 0 24px rgba(0,255,156,.25)',
+            glowCyan: '0 0 24px rgba(34,211,238,.25)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background: #070b14; }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0,255,156,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,156,.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+              mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    }
+    .text-gradient {
+      background: linear-gradient(90deg, #00ff9c, #22d3ee);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .cursor::after { content: '▋'; margin-left: 2px; color: #00ff9c; animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+    .bar-fill { width: 0; transition: width 1.3s cubic-bezier(.2,.8,.2,1); }
+    .nav-link.active { color: #00ff9c; }
+    ::selection { background: #00ff9c; color: #070b14; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #070b14; }
+    ::-webkit-scrollbar-thumb { background: #243152; border-radius: 6px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ff9c; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .bar-fill { transition: none; }
+      .cursor::after { animation: none; }
+      html { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+
+<body class="font-sans text-slate-300 antialiased selection:bg-neon">
+
+  <!-- ============ NAVBAR ============ -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#home" class="font-mono font-bold text-white tracking-tight">
+        <span class="text-neon">&gt;_</span> ali.shahin
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="#about" class="nav-link text-slate-400 hover:text-neon transition-colors">About</a></li>
+        <li><a href="#skills" class="nav-link text-slate-400 hover:text-neon transition-colors">Skills</a></li>
+        <li><a href="#projects" class="nav-link text-slate-400 hover:text-neon transition-colors">Projects</a></li>
+        <li><a href="#contact" class="nav-link text-slate-400 hover:text-neon transition-colors">Contact</a></li>
+        <li>
+          <a href="https://wa.me/201096725277" target="_blank" rel="noopener"
+             class="px-4 py-2 rounded-lg border border-neon/60 text-neon hover:bg-neon hover:text-ink-950 transition-all">Hire Me</a>
+        </li>
+      </ul>
+
+      <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false" class="md:hidden p-2 text-slate-300 hover:text-neon">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-ink-900/95 backdrop-blur border-t border-ink-700">
+      <ul class="px-5 py-4 space-y-3 text-sm font-medium">
+        <li><a href="#about" class="block py-1 hover:text-neon">About</a></li>
+        <li><a href="#skills" class="block py-1 hover:text-neon">Skills</a></li>
+        <li><a href="#projects" class="block py-1 hover:text-neon">Projects</a></li>
+        <li><a href="#contact" class="block py-1 hover:text-neon">Contact</a></li>
+        <li><a href="https://wa.me/201096725277" target="_blank" rel="noopener" class="inline-block mt-1 px-4 py-2 rounded-lg bg-neon text-ink-950 font-semibold">Hire Me</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+      <div class="absolute inset-0 grid-bg"></div>
+      <div class="absolute -top-32 -left-32 w-96 h-96 bg-neon/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 -right-32 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl"></div>
+
+      <div class="relative max-w-6xl mx-auto px-5 grid lg:grid-cols-5 gap-12 items-center w-full">
+        <div class="lg:col-span-3 reveal">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon/30 bg-neon/5 text-neon text-xs font-mono">
+            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-neon"></span></span>
+            Open for freelance &amp; internships
+          </span>
+
+          <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+            Securing the digital world,<br />
+            <span class="text-gradient">one vulnerability at a time.</span>
+          </h1>
+
+          <p class="mt-4 font-arabic text-xl text-slate-200" dir="rtl" lang="ar">علي ابراهيم شاهين</p>
+          <p class="font-mono text-sm text-slate-500 -mt-1">Ali Ibrahim Shahin</p>
+
+          <p class="mt-6 text-lg text-slate-400 max-w-2xl leading-relaxed">
+            3rd-year Computer Science &amp; Artificial Intelligence student at the Faculty of Computers and AI,
+            specializing in <span class="text-neon-cyan">Cybersecurity</span> — building the skills to find, understand and fix security weaknesses.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="https://wa.me/201096725277" target="_blank" rel="noopener"
+               class="group inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-neon text-ink-950 font-semibold hover:shadow-glow hover:-translate-y-0.5 transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.2-.24-.57-.48-.5-.66-.5h-.56c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 7 2.9 9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.9 9.88zM20.5 3.5A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.34-1.66a11.9 11.9 0 0 0 5.7 1.45h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.4z"/></svg>
+              Hire Me on WhatsApp
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#projects"
+               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-ink-600 text-slate-200 hover:border-neon hover:text-neon transition-all">
+              View Projects
+            </a>
+          </div>
+        </div>
+
+        <!-- Terminal card -->
+        <div class="lg:col-span-2 reveal" style="transition-delay:.15s">
+          <div class="rounded-xl border border-ink-700 bg-ink-900/80 backdrop-blur shadow-glow overflow-hidden">
+            <div class="flex items-center gap-2 px-4 py-3 bg-ink-800 border-b border-ink-700">
+              <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-400/80"></span>
+              <span class="w-3 h-3 rounded-full bg-neon/80"></span>
+              <span class="ml-3 text-xs font-mono text-slate-500">ali@secure-lab: ~</span>
+            </div>
+            <div class="p-5 font-mono text-sm leading-7">
+              <p><span class="text-neon">$</span> whoami</p>
+              <p class="text-slate-400">ali_shahin — cybersecurity student</p>
+              <p><span class="text-neon">$</span> cat status.txt</p>
+              <p class="text-slate-400">CS &amp; AI · Year 3 · Open to work</p>
+              <p><span class="text-neon">$</span> <span id="typed" class="text-neon-cyan cursor"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" aria-label="Scroll down" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-slate-500 hover:text-neon animate-bounce">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="py-24 bg-ink-900/60 border-y border-ink-800">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="reveal">
+          <p class="font-mono text-neon text-sm">01. about</p>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white">About Me</h2>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-3 gap-10">
+          <div class="lg:col-span-2 space-y-5 text-slate-400 leading-relaxed text-lg reveal">
+            <p>
+              I'm <span class="text-white font-medium">Ali Ibrahim Shahin</span>, a third-year student at the
+              <span class="text-white">Faculty of Computers and Artificial Intelligence</span>, studying Computer Science
+              with a strong foundation in programming, algorithms, networks and AI concepts.
+            </p>
+            <p>
+              Along the way I found my real passion in <span class="text-neon">Cybersecurity</span>. I'm dedicated to
+              understanding how systems break so I can help protect them — through hands-on practice in labs,
+              vulnerability analysis and continuous self-learning.
+            </p>
+            <p>
+              I'm currently <span class="text-white">open to freelance work, internships and professional collaborations</span>.
+              If you need a motivated, detail-oriented security enthusiast who learns fast and communicates clearly,
+              let's talk.
+            </p>
+          </div>
+
+          <div class="space-y-4 reveal" style="transition-delay:.15s">
+            <div class="p-5 rounded-xl bg-ink-800 border border-ink-700 hover:border-neon/50 hover:-translate-y-1 transition-all">
+              <p class="font-mono text-xs text-slate-500">EDUCATION</p>
+              <p class="mt-1 text-white font-semibold">B.Sc. Computer Science &amp; AI</p>
+              <p class="text-sm text-slate-400">3rd Year · Faculty of Computers and AI</p>
+            </div>
+            <div class="p-5 rounded-xl bg-ink-800 border border-ink-700 hover:border-neon/50 hover:-translate-y-1 transition-all">
+              <p class="font-mono text-xs text-slate-500">FOCUS</p>
+              <p class="mt-1 text-white font-semibold">Cybersecurity</p>
+              <p class="text-sm text-slate-400">Offensive &amp; defensive fundamentals</p>
+            </div>
+            <div class="p-5 rounded-xl bg-ink-800 border border-ink-700 hover:border-neon/50 hover:-translate-y-1 transition-all">
+              <p class="font-mono text-xs text-slate-500">AVAILABILITY</p>
+              <p class="mt-1 text-neon font-semibold">Freelance · Internships</p>
+              <p class="text-sm text-slate-400">Remote or on-site collaboration</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="py-24">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="reveal">
+          <p class="font-mono text-neon text-sm">02. skills</p>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white">Skills &amp; Expertise</h2>
+          <p class="mt-3 text-slate-400 max-w-2xl">Core technical domains I'm building and sharpening through coursework, labs and practice.</p>
+        </div>
+
+        <div id="skillGrid" class="mt-12 grid md:grid-cols-2 gap-x-10 gap-y-7">
+          <!-- Skills are injected by JS from the array below (edit levels there) -->
+        </div>
+
+        <div class="mt-14 reveal">
+          <p class="font-mono text-xs text-slate-500 mb-4">TOOLS &amp; TECHNOLOGIES</p>
+          <div class="flex flex-wrap gap-3 font-mono text-sm">
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Kali Linux</span>
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Nmap</span>
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Wireshark</span>
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Burp Suite</span>
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Metasploit</span>
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Python</span>
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Bash</span>
+            <span class="px-3 py-1.5 rounded-md bg-ink-800 border border-ink-700 hover:border-neon hover:text-neon transition">Git &amp; GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="py-24 bg-ink-900/60 border-y border-ink-800">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="reveal">
+          <p class="font-mono text-neon text-sm">03. projects</p>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white">Projects &amp; Lab Work</h2>
+          <p class="mt-3 text-slate-400 max-w-2xl">
+            Sample entries below are placeholders — replace titles, descriptions and GitHub links with your real work.
+          </p>
+        </div>
+
+        <div id="projectGrid" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Projects are injected by JS from the array below -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="relative py-24 overflow-hidden">
+      <div class="absolute inset-0 grid-bg opacity-60"></div>
+      <div class="relative max-w-4xl mx-auto px-5 text-center">
+        <div class="reveal">
+          <p class="font-mono text-neon text-sm">04. contact</p>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-white">Let's work together</h2>
+          <p class="mt-4 text-slate-400 max-w-xl mx-auto">
+            Looking for a freelancer or an intern with a security mindset? Reach out — I usually reply fastest on WhatsApp.
+          </p>
+        </div>
+
+        <div class="mt-12 grid sm:grid-cols-3 gap-5 reveal">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/201096725277" target="_blank" rel="noopener"
+             class="group p-6 rounded-xl bg-ink-800 border border-ink-700 hover:border-neon hover:shadow-glow hover:-translate-y-1 transition-all">
+            <div class="mx-auto w-12 h-12 rounded-lg bg-neon/10 text-neon flex items-center justify-center group-hover:bg-neon group-hover:text-ink-950 transition">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.2-.24-.57-.48-.5-.66-.5h-.56c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 7 2.9 9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.9 9.88zM20.5 3.5A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.34-1.66a11.9 11.9 0 0 0 5.7 1.45h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.4z"/></svg>
+            </div>
+            <p class="mt-4 font-semibold text-white">WhatsApp</p>
+            <p class="font-mono text-sm text-slate-400" dir="ltr">01096725277</p>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/ali-shahin-672b9a412?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener"
+             class="group p-6 rounded-xl bg-ink-800 border border-ink-700 hover:border-neon-cyan hover:shadow-glowCyan hover:-translate-y-1 transition-all">
+            <div class="mx-auto w-12 h-12 rounded-lg bg-neon-cyan/10 text-neon-cyan flex items-center justify-center group-hover:bg-neon-cyan group-hover:text-ink-950 transition">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <p class="mt-4 font-semibold text-white">LinkedIn</p>
+            <p class="text-sm text-slate-400">Ali Shahin</p>
+          </a>
+
+          <!-- Facebook -->
+          <!-- TODO: replace the href below with your real Facebook profile URL -->
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener"
+             class="group p-6 rounded-xl bg-ink-800 border border-ink-700 hover:border-neon hover:shadow-glow hover:-translate-y-1 transition-all">
+            <div class="mx-auto w-12 h-12 rounded-lg bg-neon/10 text-neon flex items-center justify-center group-hover:bg-neon group-hover:text-ink-950 transition">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+            </div>
+            <p class="mt-4 font-semibold text-white">Facebook</p>
+            <p class="text-sm text-slate-400">Ali Shahin</p>
+          </a>
+        </div>
+
+        <a href="https://wa.me/201096725277" target="_blank" rel="noopener"
+           class="reveal mt-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-neon text-ink-950 font-semibold hover:shadow-glow hover:-translate-y-0.5 transition-all">
+          Start a conversation
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-ink-800 bg-ink-950">
+    <div class="max-w-6xl mx-auto px-5 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <p class="font-mono"><span class="text-neon">&gt;_</span> ali.shahin</p>
+      <p>&copy; <span id="year"></span> Ali Ibrahim Shahin (<span class="font-arabic" lang="ar">علي ابراهيم شاهين</span>). All rights reserved.</p>
+      <a href="#home" class="hover:text-neon transition-colors">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- EDITABLE CONTENT ---------- */
+    const skills = [
+      { name: 'Penetration Testing',      level: 75, note: 'Recon, scanning, exploitation basics' },
+      { name: 'Network Security',         level: 80, note: 'TCP/IP, firewalls, traffic analysis' },
+      { name: 'Vulnerability Assessment', level: 75, note: 'Identify, classify and report risks' },
+      { name: 'Web Security',             level: 70, note: 'OWASP Top 10, injection, XSS, auth flaws' },
+      { name: 'Programming Fundamentals', level: 80, note: 'Python, C++, data structures & algorithms' },
+      { name: 'Problem Solving',          level: 85, note: 'Analytical thinking & persistence' },
+    ];
+
+    const projects = [
+      {
+        title: 'CTF Write-ups Collection',
+        desc: 'Placeholder: documented solutions for beginner-to-intermediate Capture The Flag challenges (web, crypto, forensics).',
+        tools: ['CTF', 'Python', 'Burp Suite'],
+        github: 'https://github.com/',
+        tag: 'CTF',
+      },
+      {
+        title: 'Network Scanning Lab',
+        desc: 'Placeholder: mapped a virtual lab network, identified open services and documented findings with Nmap.',
+        tools: ['Nmap', 'Wireshark', 'VirtualBox'],
+        github: 'https://github.com/',
+        tag: 'Network',
+      },
+      {
+        title: 'Web App Vulnerability Report',
+        desc: 'Placeholder: assessed an intentionally vulnerable web app and wrote a structured report with remediation steps.',
+        tools: ['DVWA', 'OWASP', 'Burp Suite'],
+        github: 'https://github.com/',
+        tag: 'Web',
+      },
+      {
+        title: 'Port Scanner in Python',
+        desc: 'Placeholder: a lightweight multi-threaded TCP port scanner built to understand sockets and scanning techniques.',
+        tools: ['Python', 'Sockets', 'Threading'],
+        github: 'https://github.com/',
+        tag: 'Tooling',
+      },
+      {
+        title: 'Password Security Analyzer',
+        desc: 'Placeholder: a small tool that evaluates password strength and demonstrates why weak credentials fail.',
+        tools: ['Python', 'Hashing', 'Entropy'],
+        github: 'https://github.com/',
+        tag: 'Crypto',
+      },
+      {
+        title: 'Academic Security Task',
+        desc: 'Placeholder: university coursework covering risk analysis, access control and secure system design.',
+        tools: ['Risk Analysis', 'Linux', 'Report'],
+        github: 'https://github.com/',
+        tag: 'Academic',
+      },
+    ];
+
+    /* ---------- RENDER SKILLS ---------- */
+    document.getElementById('skillGrid').innerHTML = skills.map((s, i) => `
+      <div class="reveal" style="transition-delay:${i * 70}ms">
+        <div class="flex items-baseline justify-between">
+          <h3 class="font-semibold text-white">${s.name}</h3>
+          <span class="font-mono text-sm text-neon">${s.level}%</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-0.5">${s.note}</p>
+        <div class="mt-3 h-2 rounded-full bg-ink-700 overflow-hidden" role="progressbar" aria-valuenow="${s.level}" aria-valuemin="0" aria-valuemax="100" aria-label="${s.name}">
+          <div class="bar-fill h-full rounded-full bg-gradient-to-r from-neon to-neon-cyan" data-level="${s.level}"></div>
+        </div>
+      </div>`).join('');
+
+    /* ---------- RENDER PROJECTS ---------- */
+    document.getElementById('projectGrid').innerHTML = projects.map((p, i) => `
+      <article class="reveal group flex flex-col p-6 rounded-xl bg-ink-800 border border-ink-700 hover:border-neon/60 hover:shadow-glow hover:-translate-y-1.5 transition-all duration-300" style="transition-delay:${(i % 3) * 90}ms">
+        <div class="flex items-center justify-between">
+          <svg class="w-9 h-9 text-neon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.04A11.96 11.96 0 0 1 3.6 6 12 12 0 0 0 3 9.75c0 5.59 3.82 10.29 9 11.62 5.18-1.33 9-6.03 9-11.62 0-1.31-.21-2.57-.6-3.75h-.15c-3.2 0-6.1-1.25-8.25-3.29Z"/></svg>
+          <span class="font-mono text-xs px-2 py-1 rounded bg-neon/10 text-neon">${p.tag}</span>
+        </div>
+        <h3 class="mt-5 text-lg font-semibold text-white group-hover:text-neon transition-colors">${p.title}</h3>
+        <p class="mt-2 text-sm text-slate-400 leading-relaxed flex-1">${p.desc}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          ${p.tools.map(t => `<span class="font-mono text-xs text-slate-400 px-2 py-0.5 rounded border border-ink-600">${t}</span>`).join('')}
+        </div>
+        <a href="${p.github}" target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-neon transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          View on GitHub
+          <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>`).join('');
+
+    /* ---------- NAVBAR: scroll style, mobile menu, active link ---------- */
+    const navbar = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    const onScroll = () => {
+      const scrolled = window.scrollY > 24;
+      navbar.classList.toggle('bg-ink-950/85', scrolled);
+      navbar.classList.toggle('backdrop-blur-md', scrolled);
+      navbar.classList.toggle('border-b', scrolled);
+      navbar.classList.toggle('border-ink-800', scrolled);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const sections = document.querySelectorAll('main section[id]');
+    const links = document.querySelectorAll('.nav-link');
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => spy.observe(s));
+
+    /* ---------- REVEAL ON SCROLL + SKILL BARS ---------- */
+    const revealObs = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('show');
+        e.target.querySelectorAll('.bar-fill').forEach(b => b.style.width = b.dataset.level + '%');
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    /* ---------- TYPING EFFECT ---------- */
+    const phrases = ['nmap -sV target.lab', 'ls ./ctf-writeups', 'echo "Open for hire"', 'python3 scanner.py'];
+    const typedEl = document.getElementById('typed');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      typedEl.textContent = phrases[0];
+    } else {
+      let p = 0, c = 0, deleting = false;
+      (function tick() {
+        const word = phrases[p];
+        typedEl.textContent = word.slice(0, c);
+        if (!deleting && c === word.length) { deleting = true; return setTimeout(tick, 1600); }
+        if (deleting && c === 0) { deleting = false; p = (p + 1) % phrases.length; return setTimeout(tick, 350); }
+        c += deleting ? -1 : 1;
+        setTimeout(tick, deleting ? 35 : 70);
+      })();
+    }
+
+    /* ---------- FOOTER YEAR ---------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
